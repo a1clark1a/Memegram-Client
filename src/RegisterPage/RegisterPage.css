@@ -1,0 +1,12 @@
+.register-form {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.register-fieldset {
+  display: flex;
+  flex-direction: column;
+}

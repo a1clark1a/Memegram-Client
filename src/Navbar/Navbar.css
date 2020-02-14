@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(138, 136, 136);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.login-wrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 3%;
+}
+
+.login-wrapper * {
+  padding-right: 10px;
+}
+
+.home-header {
+  margin-left: 10%;
+}

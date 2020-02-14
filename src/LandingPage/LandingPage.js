@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ImageService from "../service/image-service";
 import ImagesListConext from "../context/ImageListContextProvider";
+import DisplayImages from "./DisplayImages/DisplayImages";
 //import PropTypes from "prop-types"; TODO update to use proptypes once API server is setup
 import "./LandingPage.css";
-import { Link } from "react-router-dom";
 
 class LandingPage extends Component {
   static contextType = ImagesListConext;
@@ -13,28 +13,29 @@ class LandingPage extends Component {
       .then(this.context.setImagesList)
       .catch(this.context.setError);
   }
-  render() {
+
+  displayImages() {
     const { imagesList = [] } = this.context;
-    const display = imagesList.map((img, i) => {
+    return imagesList.map(img => {
       return (
-        <Link to={"/image"} key={i}>
-          <img
-            className="landing-image"
-            src={img.download_url}
-            alt={img.author}
-          />
-        </Link>
+        <DisplayImages
+          url={img.download_url}
+          author={img.author}
+          key={img.id}
+          id={img.id}
+        />
       );
     });
+  }
 
+  render() {
     return (
       <>
         <header className="banner" role="banner">
           <h1>Memegram</h1>
-          <h2>Browse and Upload Endless memes</h2>
         </header>
         <section className="images-sect">
-          <div className="image-container">{display}</div>
+          <div className="image-container">{this.displayImages()}</div>
         </section>
       </>
     );

@@ -1,0 +1,17 @@
+.comment {
+  font-size: 20px;
+}
+
+.comment-wrapper {
+  margin: auto;
+}
+
+.comment-form {
+  margin: auto;
+}
+.comment-sect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 5%;
+}

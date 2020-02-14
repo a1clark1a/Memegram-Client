@@ -6,21 +6,26 @@ import ImagePage from "./ImagePage/ImagePage";
 import LoginPage from "./LoginPage/LoginPage";
 import RegisterPage from "./RegisterPage/RegisterPage";
 import { ImagesListProvider } from "./context/ImageListContextProvider";
+import NotFoundPage from "./NotFoundPage/NotFoundPage";
 import "./App.css";
+import { ImageProvider } from "./context/ImageContextProvider";
 
 class App extends Component {
   render() {
     return (
       <ImagesListProvider>
-        <Navbar />
-        <main>
-          <Switch>
-            <Route exact path={"/"} component={LandingPage} />
-            <Route path={"/image"} component={ImagePage} />
-            <Route path={"/login"} component={LoginPage} />
-            <Route path={"/register"} component={RegisterPage} />
-          </Switch>
-        </main>
+        <ImageProvider>
+          <Navbar />
+          <main>
+            <Switch>
+              <Route exact path={"/"} component={LandingPage} />
+              <Route path={"/image/:imageId"} component={ImagePage} />
+              <Route path={"/login"} component={LoginPage} />
+              <Route path={"/register"} component={RegisterPage} />
+              <Route path="/*" component={NotFoundPage} />
+            </Switch>
+          </main>
+        </ImageProvider>
       </ImagesListProvider>
     );
   }

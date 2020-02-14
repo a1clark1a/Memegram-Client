@@ -6,6 +6,11 @@ const ImageService = {
     return fetch(`${config.API_ENDPOINT}/v2/list?limit=16`).then(res => {
       return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
     });
+  },
+  getClickedImage(imageId) {
+    return fetch(`${config.API_ENDPOINT}/id/${imageId}/info`).then(res => {
+      return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
+    });
   }
 };
 

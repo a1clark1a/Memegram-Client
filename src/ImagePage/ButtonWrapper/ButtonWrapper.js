@@ -1,11 +1,24 @@
 import React from "react";
+import TokenService from "../../service/token-service";
 
-const ButtonWrapper = () => {
+const ButtonWrapper = props => {
   return (
     <div className="button-wrapper">
-      <button>Upvote</button>
-      <button>Downvote</button>
-      <button>Favorite</button>
+      <button
+        disabled={TokenService.hasAuthToken() ? false : true}
+        onClick={props.onUpvoteClick}
+      >
+        {props.upvote} Upvote
+      </button>
+      <button
+        disabled={TokenService.hasAuthToken() ? false : true}
+        onClick={props.onDownvoteClick}
+      >
+        {props.downvote} Downvote
+      </button>
+      <button disabled={TokenService.hasAuthToken() ? false : true}>
+        Favorite
+      </button>
     </div>
   );
 };

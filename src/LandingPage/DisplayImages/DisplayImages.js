@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 
 const DisplayImages = props => {
   return (
-    <Link to={`/image/${props.id}`} key={props.id}>
+    <Link className="individ-wrapper" to={`/image/${props.id}`} key={props.id}>
       <img className="landing-image" src={props.url} alt={props.author} />
-      <p>Description here...</p>
+      <div>
+        <code>{props.upvoteCount} </code>
+        <code>{props.downvoteCount} </code>
+      </div>
+      <p className="display-img-description">{props.description}</p>
     </Link>
   );
 };

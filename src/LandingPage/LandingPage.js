@@ -19,10 +19,13 @@ class LandingPage extends Component {
     return imagesList.map(img => {
       return (
         <DisplayImages
-          url={img.download_url}
-          author={img.author}
+          url={img.url}
+          author={img.title}
+          upvoteCount={img.upvote_count}
+          downvoteCount={img.downvote_count}
           key={img.id}
           id={img.id}
+          description={img.description}
         />
       );
     });

@@ -1,36 +1,26 @@
 import React, { Component } from "react";
-import "./LoginPage.css";
+import LoginForm from "./LoginForm";
 
 export default class LoginPage extends Component {
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {}
+    }
+  };
+
+  handleLoginSuccess = () => {
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/";
+    history.push(destination);
+  };
+
   render() {
+    console.log("called");
     return (
-      <form className="login-form">
-        <fieldset className="login-fieldset">
-          <legend>Log In</legend>
-          <label htmlFor="user-name">
-            User Name *
-            <input
-              type="text"
-              className="login-user-name-input"
-              name="user-name"
-              id="user-name"
-              aria-label="User Name"
-              aria-required="true"
-            />
-          </label>
-          <label htmlFor="password">
-            Password *
-            <input
-              type="text"
-              className="login-password-input"
-              name="password"
-              id="password"
-              aria-label="Password"
-              aria-required="true"
-            />
-          </label>
-        </fieldset>
-      </form>
+      <section className="loginPage-sect">
+        <LoginForm onLoginSucces={this.handleLoginSuccess} />
+      </section>
     );
   }
 }

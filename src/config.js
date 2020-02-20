@@ -1,4 +1,4 @@
 export default {
-  API_ENDPOINT: "https://picsum.photos",
-  TOKEN_KEY: ""
+  API_ENDPOINT: "http://localhost:8000/api",
+  TOKEN_KEY: "token-memegram-api"
 };

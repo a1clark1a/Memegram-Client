@@ -3,7 +3,8 @@ import config from "../config";
 //HANDLE JWT TOKENS
 
 const TokenService = {
-  saveAuthToken(token) {
+  saveAuthTokenAndUserName(token, user_name) {
+    window.sessionStorage.setItem("user_name", user_name);
     window.sessionStorage.setItem(config.TOKEN_KEY, token);
   },
   getAuthToken() {
@@ -14,6 +15,9 @@ const TokenService = {
   },
   hasAuthToken() {
     return !!TokenService.getAuthToken();
+  },
+  getUserName() {
+    return window.sessionStorage.getItem("user_name");
   }
 };
 

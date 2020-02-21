@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../context/UserContextProvider";
 import TokenService from "../service/token-service";
 import "./Navbar.css";
 
 export default class Navbar extends Component {
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
+    this.forceUpdate();
   };
 
   renderProfileLink() {
+    const user_name = TokenService.getUserName();
     return (
       <div className="profile-wrapper">
-        <Link to="/user/:userid">
-          <button>Profile</button>
-        </Link>
+        <Link to={`/users/${user_name}`}>Profile</Link>
         <Link onClick={this.handleLogoutClick} to="/">
-          <button>Logout</button>
+          Logout
         </Link>
       </div>
     );
@@ -24,12 +25,8 @@ export default class Navbar extends Component {
   renderLoginLink() {
     return (
       <div className="login-wrapper">
-        <Link to="/register">
-          <button>Register</button>
-        </Link>
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+        <Link to="/register">Register</Link>
+        <Link to="/login">Login</Link>
       </div>
     );
   }

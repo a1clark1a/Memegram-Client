@@ -12,7 +12,6 @@ export default class RegisterPage extends Component {
   handleSubmitNewUser = e => {
     e.preventDefault();
     const { full_name, user_name, password } = e.target;
-    console.log(password.value);
     this.setState({
       error: null
     });

@@ -20,10 +20,10 @@ export default class LoginPage extends Component {
       password: password.value
     })
       .then(res => {
+        console.log(res);
         user_name.value = "";
         password.value = "";
-        TokenService.saveAuthToken(res.authToken);
-        console.log("is called");
+        TokenService.saveAuthTokenAndUserName(res.authToken, res.user_name);
         this.props.onLoginSucces();
       })
       .catch(res => {

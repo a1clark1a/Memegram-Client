@@ -12,8 +12,8 @@ import "./App.css";
 import { ImageProvider } from "./context/ImageContextProvider";
 import { UserContextProvider } from "./context/UserContextProvider";
 import ProfilePage from "./ProfilePage/ProfilePage";
-import TokenService from "./service/token-service";
 import PrivateOnlyRoute from "./Utility/PrivateOnlyRoute";
+import UploadImageForm from "./ProfilePage/UploadImage/UploadImageForm";
 
 class App extends Component {
   state = { hasError: false };
@@ -36,10 +36,14 @@ class App extends Component {
                 <Route exact path={"/"} component={LandingPage} />
                 <Route path={"/image/:imageId"} component={ImagePage} />
                 <PublicOnlyRoute path={"/login"} component={LoginPage} />
-                <Route path={"/register"} component={RegisterPage} />
+                <PublicOnlyRoute path={"/register"} component={RegisterPage} />
                 <PrivateOnlyRoute
                   path={"/users/:user_name"}
                   component={ProfilePage}
+                />
+                <PrivateOnlyRoute
+                  path={"/upload"}
+                  component={UploadImageForm}
                 />
                 <Route path="/*" component={NotFoundPage} />
               </Switch>

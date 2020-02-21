@@ -25,8 +25,8 @@ export default class Navbar extends Component {
   renderLoginLink() {
     return (
       <div className="login-wrapper">
+        <Link to="/login">Log in</Link>
         <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
       </div>
     );
   }

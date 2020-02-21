@@ -13,12 +13,19 @@ export default class ImagePage extends Component {
 
   componentDidMount() {
     const { imageId } = this.props.match.params;
+
     this.context.clearError();
     ImageService.getClickedImage(imageId)
       .then(this.context.setImage)
       .catch(this.context.setError);
     ImageService.getCommentsForClickedImage(imageId)
       .then(this.context.setComments)
+      .then(() => {
+        const { image } = this.context;
+        ImageService.getImagePoster(image.user_id)
+          .then(user => this.context.addUserName(user.user_name))
+          .catch(this.context.setError);
+      })
       .catch(this.context.setError);
   }
 
@@ -36,7 +43,7 @@ export default class ImagePage extends Component {
       .catch(this.context.setError);
   };
 
-  handleDownvoteClick = cb => {
+  handleDownvoteClick = () => {
     this.context.clearError();
     const { imageId } = this.props.match.params;
     const { image } = this.context;
@@ -47,7 +54,7 @@ export default class ImagePage extends Component {
   };
 
   renderImagePage() {
-    const { image } = this.context;
+    const { image, user_name } = this.context;
     return (
       <div className="image-wrapper">
         <h1 className="image-title">{image.title}</h1>
@@ -58,6 +65,7 @@ export default class ImagePage extends Component {
           upvote={image.upvote_count}
           downvote={image.downvote_count}
         />
+        <h1>{user_name}</h1>
         <p className="image-description">{image.description}</p>
       </div>
     );

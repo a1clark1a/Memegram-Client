@@ -16,9 +16,6 @@ const ButtonWrapper = props => {
       >
         {props.downvote} Downvote
       </button>
-      <button disabled={TokenService.hasAuthToken() ? false : true}>
-        Favorite
-      </button>
     </div>
   );
 };

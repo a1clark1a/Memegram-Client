@@ -3,6 +3,7 @@ import UserContext from "../context/UserContextProvider";
 import DisplayImages from "../LandingPage/DisplayImages/DisplayImages";
 import UserService from "../service/user-service";
 import "./ProfilePage.css";
+import { Link } from "react-router-dom";
 
 export default class ProfilePage extends Component {
   static defaultProps = {
@@ -58,12 +59,16 @@ export default class ProfilePage extends Component {
               <h1>{user.user_name}</h1>
               <h2>About</h2>
             </div>
+            <div>
+              <Link to={`/upload`}>
+                <button>UPLOAD MEME</button>
+              </Link>
+            </div>
           </article>
         </section>
         <section className="viewbar-sect">
           <div className="tab">
             <h2>Uploads</h2>
-            <h2>Favorites</h2>
           </div>
         </section>
         <section className="images-sect">{this.displayImages()}</section>

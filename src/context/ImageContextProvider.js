@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 const ImageContext = React.createContext({
   image: {},
+  user_name: "",
   comments: [],
   error: null,
   setError: () => {},
@@ -18,6 +19,7 @@ export default ImageContext;
 export class ImageProvider extends Component {
   state = {
     image: {},
+    user_name: "",
     comments: [],
     error: null
   };
@@ -52,9 +54,14 @@ export class ImageProvider extends Component {
     this.setComments([...this.state.comments, comment]);
   };
 
+  addUserName = user_name => {
+    this.setState({ user_name });
+  };
+
   render() {
     const contextValue = {
       image: this.state.image,
+      user_name: this.state.user_name,
       comments: this.state.comments,
       error: this.state.error,
       setError: this.setError,
@@ -63,7 +70,8 @@ export class ImageProvider extends Component {
       clearImage: this.clearImage,
       setComments: this.setComments,
       clearComments: this.clearComments,
-      addComments: this.addComments
+      addComments: this.addComments,
+      addUserName: this.addUserName
     };
     return (
       <ImageContext.Provider value={contextValue}>

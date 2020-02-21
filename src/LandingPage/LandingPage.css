@@ -1,6 +1,7 @@
 .landing-image {
   width: 100%;
-  height: 250;
+  height: 300px;
+  object-fit: cover;
 }
 
 .image-container {
@@ -20,8 +21,8 @@
   text-decoration: none;
   color: black;
   width: 350px;
-  height: 300px;
-  margin: 5px;
+  max-height: 350px;
+  margin: 25px 15px 25px 15px;
 }
 
 .display-img-description {

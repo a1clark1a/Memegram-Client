@@ -20,6 +20,11 @@ const ImageService = {
       }
     );
   },
+  getImagePoster(userId) {
+    return fetch(`${config.API_ENDPOINT}/memes/${userId}/users`).then(res => {
+      return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
+    });
+  },
   postComment(imageId, comment) {
     return fetch(`${config.API_ENDPOINT}/comments`, {
       method: "POST",

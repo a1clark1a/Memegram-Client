@@ -5,18 +5,22 @@ import TokenService from "../service/token-service";
 import "./Navbar.css";
 
 export default class Navbar extends Component {
+  static contextType = UserContext;
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
-    this.forceUpdate();
+    this.context.clearUser();
   };
 
   renderProfileLink() {
-    const user_name = TokenService.getUserName();
+    const user_name = this.context.user.user_name;
+    console.log("from nav", user_name);
     return (
       <div className="profile-wrapper">
-        <Link to={`/users/${user_name}`}>Profile</Link>
+        <Link to={`/users/${user_name}`}>
+          <button>Profile</button>
+        </Link>
         <Link onClick={this.handleLogoutClick} to="/">
-          Logout
+          <button>Logout</button>
         </Link>
       </div>
     );
@@ -25,8 +29,12 @@ export default class Navbar extends Component {
   renderLoginLink() {
     return (
       <div className="login-wrapper">
-        <Link to="/login">Log in</Link>
-        <Link to="/register">Register</Link>
+        <Link to="/login">
+          <button>Log in</button>
+        </Link>
+        <Link to="/register">
+          <button>Register</button>
+        </Link>
       </div>
     );
   }
@@ -36,9 +44,9 @@ export default class Navbar extends Component {
         <Link to="/">
           <h1 className="home-header">Memegram</h1>
         </Link>
-        {TokenService.hasAuthToken()
-          ? this.renderProfileLink()
-          : this.renderLoginLink()}
+        {!this.context.user.user_name && !TokenService.hasAuthToken()
+          ? this.renderLoginLink()
+          : this.renderProfileLink()}
       </nav>
     );
   }

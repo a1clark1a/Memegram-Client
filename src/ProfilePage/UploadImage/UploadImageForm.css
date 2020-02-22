@@ -1,7 +1,15 @@
-.upload-form {
-  margin-top: 200px;
+.upload-form,
+.uploadUrl-form {
   display: flex;
   justify-content: center;
   text-align: center;
   width: 100%;
+}
+
+.in-dev {
+  margin: 0;
+}
+
+.form-sect {
+  margin-top: 200px;
 }

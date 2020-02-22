@@ -34,7 +34,9 @@ export default class RegisterPage extends Component {
     const { error } = this.state;
     return (
       <form className="register-form" onSubmit={this.handleSubmitNewUser}>
-        <div role="alert">{error && <p className="red">{error}</p>}</div>
+        <div role="alert">
+          {error && <p className="error-message">{error}</p>}
+        </div>
         <fieldset className="register-fieldset">
           <legend>Register</legend>
           <label htmlFor="full_name">

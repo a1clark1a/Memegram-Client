@@ -20,7 +20,7 @@ class LandingPage extends Component {
       return (
         <DisplayImages
           url={img.url}
-          author={img.title}
+          title={img.title}
           upvoteCount={img.upvote_count}
           downvoteCount={img.downvote_count}
           key={img.id}

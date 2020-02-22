@@ -23,23 +23,27 @@ export class UserContextProvider extends Component {
   };
 
   setUser = user => {
+    console.log("setting user", user);
     this.setState({
       user
     });
   };
 
   clearUser = () => {
+    console.log("clearing user");
     this.setUser({ user: {} });
     this.setMemesList([]);
   };
 
   setError = error => {
+    console.log(error);
     this.setState({
       error
     });
   };
 
   clearError = () => {
+    console.log("clearing error");
     this.setState({ error: null });
   };
 
@@ -48,10 +52,12 @@ export class UserContextProvider extends Component {
   };
 
   setMemesList = memesList => {
+    console.log("setting memesList", memesList);
     this.setState({ memesList });
   };
 
   clearMemesList = () => {
+    console.log("clearing memeslist");
     this.setState({ memesList: [] });
   };
 

@@ -62,15 +62,16 @@ export default class CommentSection extends Component {
   };
 
   renderComments = () => {
-    const { commentsArray } = this.props;
+    const { comments } = this.context;
 
-    const listOfComments = commentsArray.map(comment => {
+    const listOfComments = comments.map(comment => {
       return (
         <li key={comment.id}>
-          <p>{comment.comment}</p>
           <p>
-            By: User: {comment.user_id}
-            {/*TODO FETCH USER BY USER_ID */}{" "}
+            <code>By User:{comment.user_id} = </code>
+            {comment.comment}
+          </p>
+          <p>
             <code>{comment.date_created}</code>
           </p>
         </li>

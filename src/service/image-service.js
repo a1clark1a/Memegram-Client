@@ -40,6 +40,18 @@ const ImageService = {
       return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
     });
   },
+  postImageWithURL(newImage) {
+    return fetch(`${config.API_ENDPOINT}/memes`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(newImage)
+    }).then(res => {
+      return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
+    });
+  },
   updateImage(imageId, newImage) {
     return fetch(`${config.API_ENDPOINT}/memes/${imageId}`, {
       method: "PATCH",

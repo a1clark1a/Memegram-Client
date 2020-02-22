@@ -32,15 +32,15 @@ export default class ImagePage extends Component {
   componentWillUnmount() {
     this.context.clearImage();
     this.context.clearComments();
+
   }
 
   handleUpvoteClick = () => {
+    this.context.clearError();
     const { imageId } = this.props.match.params;
     const { image } = this.context;
     image.upvote_count++;
-    ImageService.updateImage(imageId, image)
-      .then(this.context.setImage)
-      .catch(this.context.setError);
+    ImageService.updateImage(imageId, image);
   };
 
   handleDownvoteClick = () => {
@@ -48,9 +48,7 @@ export default class ImagePage extends Component {
     const { imageId } = this.props.match.params;
     const { image } = this.context;
     image.downvote_count++;
-    ImageService.updateImage(imageId, image)
-      .then(this.context.setImage)
-      .catch(this.context.setError);
+    ImageService.updateImage(imageId, image);
   };
 
   renderImagePage() {
@@ -72,11 +70,10 @@ export default class ImagePage extends Component {
   }
 
   render() {
-    const { comments } = this.context;
     return (
       <section className="image-sect">
         {this.renderImagePage()}
-        <CommentSection commentsArray={comments} />
+        <CommentSection />
       </section>
     );
   }

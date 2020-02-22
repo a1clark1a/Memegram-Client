@@ -23,7 +23,7 @@ export default class LoginPage extends Component {
         user_name.value = "";
         password.value = "";
         TokenService.saveAuthTokenAndUserName(res.authToken, res.user_name);
-        this.props.onLoginSucces();
+        this.props.onLoginSucces(res.user_name);
       })
       .catch(res => {
         this.setState({ error: res.error.message });
@@ -34,7 +34,9 @@ export default class LoginPage extends Component {
     const { error } = this.state;
     return (
       <form className="login-form" onSubmit={this.handleLoginSubmit}>
-        <div role="alert">{error && <p className="red">{error}</p>}</div>
+        <div role="alert">
+          {error && <p className="error-message">{error}</p>}
+        </div>
         <fieldset className="login-fieldset">
           <legend>Log In</legend>
           <label htmlFor="user_name">

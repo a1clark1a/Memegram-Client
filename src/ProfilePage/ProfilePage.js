@@ -12,6 +12,7 @@ export default class ProfilePage extends Component {
   static contextType = UserContext;
   componentDidMount() {
     const { user_name } = this.props.match.params;
+
     this.context.clearError();
     UserService.getUserByUserName(user_name)
       .then(this.context.setUser)
@@ -25,7 +26,6 @@ export default class ProfilePage extends Component {
   }
 
   componentWillUnmount() {
-    this.context.clearUser();
     this.context.clearMemesList();
   }
 
@@ -57,7 +57,6 @@ export default class ProfilePage extends Component {
             </div>
             <div>
               <h1>{user.user_name}</h1>
-              <h2>About</h2>
             </div>
             <div>
               <Link to={`/upload`}>

@@ -12,11 +12,14 @@ export default class Navbar extends Component {
   };
 
   renderProfileLink() {
-    const user_name = this.context.user.user_name;
-    console.log("from nav", user_name);
+    const { user } = this.context;
+    const current_user = user.user_name
+      ? user.user_name
+      : TokenService.getUserName();
+    console.log("from nav", current_user);
     return (
       <div className="profile-wrapper">
-        <Link to={`/users/${user_name}`}>
+        <Link to={`/users/${current_user}`}>
           <button>Profile</button>
         </Link>
         <Link onClick={this.handleLogoutClick} to="/">
@@ -44,7 +47,7 @@ export default class Navbar extends Component {
         <Link to="/">
           <h1 className="home-header">Memegram</h1>
         </Link>
-        {!this.context.user.user_name && !TokenService.hasAuthToken()
+        {!TokenService.hasAuthToken()
           ? this.renderLoginLink()
           : this.renderProfileLink()}
       </nav>

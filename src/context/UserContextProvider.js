@@ -10,7 +10,8 @@ const UserContext = React.createContext({
   clearError: () => {},
   UploadMeme: () => {},
   setMemesList: () => {},
-  clearMemesList: () => {}
+  clearMemesList: () => {},
+  deleteImageFromList: () => {}
 });
 
 export default UserContext;
@@ -52,13 +53,23 @@ export class UserContextProvider extends Component {
   };
 
   setMemesList = memesList => {
-    console.log("setting memesList", memesList);
+    console.log("setting memesList for user", memesList);
     this.setState({ memesList });
   };
 
   clearMemesList = () => {
     console.log("clearing memeslist");
     this.setState({ memesList: [] });
+  };
+
+  deleteImageFromList = imageId => {
+    console.log("deleting image", imageId);
+    const newImageList = this.state.memesList.filter(img => {
+      return img.id !== imageId;
+    });
+    this.setState({
+      memesList: newImageList
+    });
   };
 
   render() {
@@ -72,7 +83,8 @@ export class UserContextProvider extends Component {
       clearError: this.clearError,
       UploadMeme: this.UploadMeme,
       setMemesList: this.setMemesList,
-      clearMemesList: this.clearMemesList
+      clearMemesList: this.clearMemesList,
+      deleteImageFromList: this.deleteImageFromList
     };
     return (
       <UserContext.Provider value={contextValue}>

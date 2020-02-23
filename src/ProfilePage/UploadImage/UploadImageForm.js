@@ -14,17 +14,17 @@ export default class UploadImageForm extends Component {
     error: null
   };
 
-  onLoginSuccess = () => {
-    const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/";
-    history.push(destination);
+  onUploadSuccess = () => {
+    const { user } = this.context;
+    const { history } = this.props;
+    history.push(`/users/${user.user_name}`);
   };
 
   handleSubmitWithUrl = e => {
     e.preventDefault();
     const { title, description, url } = e.target;
     const { user } = this.context;
-    console.log(user);
+    console.log("user that submitted", user.user_name);
     this.setState({ error: null });
     ImageService.postImageWithURL({
       title: title.value,
@@ -36,7 +36,7 @@ export default class UploadImageForm extends Component {
         title.value = "";
         description.value = "";
         url.value = "";
-        this.onLoginSuccess();
+        this.onUploadSuccess();
       })
       .catch(res => {
         this.setState({ error: res.error.message });

@@ -4,7 +4,7 @@ import "./RegisterPage.css";
 
 export default class RegisterPage extends Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {}
+    onRegisterSuccess: () => {}
   };
 
   state = { error: null };
@@ -20,11 +20,11 @@ export default class RegisterPage extends Component {
       password: password.value,
       full_name: full_name.value
     })
-      .then(user => {
+      .then(res => {
         full_name.value = "";
         user_name.value = "";
         password.value = "";
-        this.props.onRegistrationSuccess();
+        this.props.onRegisterSuccess();
       })
       .catch(res => {
         this.setState({ error: res.error.message });

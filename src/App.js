@@ -4,7 +4,7 @@ import Navbar from "./Navbar/Navbar";
 import LandingPage from "./LandingPage/LandingPage";
 import ImagePage from "./ImagePage/ImagePage";
 import LoginPage from "./LoginPage/LoginPage";
-import RegisterPage from "./RegisterPage/RegisterForm";
+import RegisterPage from "./RegisterPage/RegisterPage";
 import { ImagesListProvider } from "./context/ImageListContextProvider";
 import NotFoundPage from "./NotFoundPage/NotFoundPage";
 import PublicOnlyRoute from "./Utility/PublicOnlyRoute";

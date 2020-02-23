@@ -61,7 +61,30 @@ const ImageService = {
       },
       body: JSON.stringify(newImage)
     }).then(res => {
-      return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
+      // return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
+      if (!res.ok) {
+        return res.json().then(error => {
+          throw error;
+        });
+      }
+    });
+  },
+  deleteImageUploadedByUser(imageId, userId) {
+    return fetch(`${config.API_ENDPOINT}/memes/${imageId}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        user_id: userId
+      })
+    }).then(res => {
+      if (!res.ok) {
+        return res.json().then(error => {
+          throw error;
+        });
+      }
     });
   }
 };

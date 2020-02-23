@@ -4,15 +4,16 @@ import DisplayImages from "../LandingPage/DisplayImages/DisplayImages";
 import UserService from "../service/user-service";
 import "./ProfilePage.css";
 import { Link } from "react-router-dom";
+import DeleteButton from "./DeleteImage/DeleteImage";
 
 export default class ProfilePage extends Component {
   static defaultProps = {
     match: { params: {} }
   };
   static contextType = UserContext;
+
   componentDidMount() {
     const { user_name } = this.props.match.params;
-
     this.context.clearError();
     UserService.getUserByUserName(user_name)
       .then(this.context.setUser)
@@ -29,19 +30,29 @@ export default class ProfilePage extends Component {
     this.context.clearMemesList();
   }
 
+  reRender = () => {
+    console.log("calling rerender");
+  };
+
   displayImages() {
     const { memesList = [] } = this.context;
     return memesList.map(img => {
       return (
-        <DisplayImages
-          url={img.url}
-          author={img.title}
-          upvoteCount={img.upvote_count}
-          downvoteCount={img.downvote_count}
-          key={img.id}
-          id={img.id}
-          description={img.description}
-        />
+        <article className="image-art" key={img.id}>
+          <DisplayImages
+            url={img.url}
+            title={img.title}
+            upvoteCount={img.upvote_count}
+            downvoteCount={img.downvote_count}
+            id={img.id}
+            description={img.description}
+          />
+          <DeleteButton
+            reRender={() => this.reRender()}
+            id={img.id}
+            user_id={img.user_id}
+          />
+        </article>
       );
     });
   }
@@ -52,17 +63,10 @@ export default class ProfilePage extends Component {
       <>
         <section className="profilePage-sect">
           <article>
-            <div>
-              <img className="profile-pic" src="" alt="imagehere" />
-            </div>
-            <div>
-              <h1>{user.user_name}</h1>
-            </div>
-            <div>
-              <Link to={`/upload`}>
-                <button>UPLOAD MEME</button>
-              </Link>
-            </div>
+            <h1>{user.user_name}</h1>
+            <Link to={`/upload`}>
+              <button>UPLOAD MEME</button>
+            </Link>
           </article>
         </section>
         <section className="viewbar-sect">

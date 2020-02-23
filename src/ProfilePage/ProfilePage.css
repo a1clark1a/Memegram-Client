@@ -1,6 +1,16 @@
 .profilePage-sect {
   display: flex;
-  padding: 150px 0px;
+  justify-content: center;
+  padding: 100px 0 50px 0;
+}
+
+.image-art {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  width: 350px;
+  max-height: 350px;
+  margin: 25px 15px 25px 15px;
 }
 
 .profile-pic {
@@ -28,7 +38,7 @@
 }
 
 .tab {
-  display: flex;
+  text-align: center;
   margin: 0px;
 }
 

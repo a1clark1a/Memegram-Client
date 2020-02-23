@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CommentSection from "./CommentSection/CommentSection";
-import ButtonWrapper from "./ButtonWrapper/ButtonWrapper";
+//import ButtonWrapper from "./ButtonWrapper/ButtonWrapper";
 import ImageService from "../service/image-service";
 import ImageContext from "../context/ImageContextProvider";
 import "./ImagePage.css";
@@ -16,10 +16,9 @@ export default class ImagePage extends Component {
 
     this.context.clearError();
     ImageService.getClickedImage(imageId)
-      .then(this.context.setImage)
-      .catch(this.context.setError);
-    ImageService.getCommentsForClickedImage(imageId)
-      .then(this.context.setComments)
+      .then(res => {
+        this.context.setImage(res);
+      })
       .then(() => {
         const { image } = this.context;
         ImageService.getImagePoster(image.user_id)
@@ -27,42 +26,41 @@ export default class ImagePage extends Component {
           .catch(this.context.setError);
       })
       .catch(this.context.setError);
+    ImageService.getCommentsForClickedImage(imageId)
+      .then(this.context.setComments)
+      .catch(this.context.setError);
   }
 
   componentWillUnmount() {
     this.context.clearImage();
     this.context.clearComments();
-
   }
 
-  handleUpvoteClick = () => {
+  handleUpvoteClick = (imageId, image) => {
     this.context.clearError();
-    const { imageId } = this.props.match.params;
-    const { image } = this.context;
     image.upvote_count++;
-    ImageService.updateImage(imageId, image);
+    ImageService.updateImage(imageId, image).catch(this.context.setError);
   };
 
-  handleDownvoteClick = () => {
+  handleDownvoteClick = (imageId, image) => {
     this.context.clearError();
-    const { imageId } = this.props.match.params;
-    const { image } = this.context;
     image.downvote_count++;
-    ImageService.updateImage(imageId, image);
+    ImageService.updateImage(imageId, image).catch(this.context.setError);
   };
 
   renderImagePage() {
+    //  const { imageId } = this.props.match.params;
     const { image, user_name } = this.context;
     return (
       <div className="image-wrapper">
         <h1 className="image-title">{image.title}</h1>
         <img className="clicked-image" src={image.url} alt={image.title} />
-        <ButtonWrapper
-          onUpvoteClick={this.handleUpvoteClick}
-          onDownvoteClick={this.handleDownvoteClick}
+        {/*<ButtonWrapper
+          onUpvoteClick={() => this.handleUpvoteClick(imageId, image)}
+          onDownvoteClick={() => this.handleDownvoteClick(imageId, image)}
           upvote={image.upvote_count}
           downvote={image.downvote_count}
-        />
+        />*/}
         <h1>{user_name}</h1>
         <p className="image-description">{image.description}</p>
       </div>

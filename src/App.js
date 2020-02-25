@@ -47,6 +47,9 @@ class App extends Component {
                 />
                 <Route path="/*" component={NotFoundPage} />
               </Switch>
+              <footer>
+                <code>Anthony Clark Perfecto @{new Date().getFullYear()}</code>
+              </footer>
             </main>
           </UserContextProvider>
         </ImageProvider>

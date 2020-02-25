@@ -1,9 +1,10 @@
 .landing-image {
-  width: 100%;
+  width: 97%;
   height: 300px;
   object-fit: fill;
   border: 1px black solid;
   border-radius: 10px;
+  margin-top: 1%;
 }
 
 .image-container {
@@ -25,17 +26,18 @@
   width: 370px;
   margin: 10px 15px 10px 15px;
   padding-bottom: 5px;
-  background-color: rgba(32, 119, 45);
+  background-color: rgb(223, 114, 41);
   border-radius: 2%;
   overflow: hidden;
-  box-shadow: 0 10px 5px 3px rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 2px 3px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .display-img-title {
   margin: 0;
   padding: 0 20px 0 20px;
-  max-height: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 2rem;
 }
 
 .images-sect {

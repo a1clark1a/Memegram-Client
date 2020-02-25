@@ -33,14 +33,11 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <>
-        <header className="banner" role="banner">
-          <h1>Memegram</h1>
-        </header>
+      <header className="banner" role="banner">
         <section className="images-sect">
           <div className="image-container">{this.displayImages()}</div>
         </section>
-      </>
+      </header>
     );
   }
 }

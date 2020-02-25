@@ -55,15 +55,19 @@ export default class ProfilePage extends Component {
       <>
         <section className="profilePage-sect">
           <article>
-            <h1>{user.user_name}</h1>
+            <h1 className="prof-user-name">{user.user_name}</h1>
             <Link to={`/upload`}>
-              <button>UPLOAD MEME</button>
+              <button className="upload-button nav-button">
+                <span>UPLOAD MEME</span>
+              </button>
             </Link>
           </article>
         </section>
         <section className="viewbar-sect">
-          <div className="tab">
-            <h2>Uploads</h2>
+          <div className="tab-wrapper">
+            <h2 className="uploads-tab">
+              {"<"} Uploads {">"}
+            </h2>
           </div>
         </section>
         <section className="images-sect">{this.displayImages()}</section>

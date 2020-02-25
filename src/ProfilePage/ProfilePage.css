@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 100px 0 50px 0;
+  text-align: center;
 }
 
 .image-art {
@@ -10,14 +11,16 @@
   width: 370px;
   margin: 10px 15px 10px 15px;
   padding-bottom: 5px;
-  background-color: gray;
+  background-color: rgb(223, 114, 41);
   border-radius: 2%;
-  overflow-wrap: break-word;
+  overflow: hidden;
+  box-shadow: 0 4px 2px 3px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .image-art > .individ-wrapper {
   margin: 0;
   padding: 0;
+  box-shadow: 0 0 0;
 }
 
 .profile-pic {
@@ -29,6 +32,10 @@
   border-image: initial;
 }
 
+.prof-user-name {
+  font-size: 3rem;
+}
+
 .images-sect {
   justify-content: space-evenly;
   display: flex;
@@ -38,17 +45,18 @@
 }
 
 .viewbar-sect {
-  background-color: rgb(94, 94, 94);
+  background-color: rgb(36, 35, 35);
   display: flex;
   justify-content: center;
-  border-bottom: 5px solid rgb(0, 0, 0);
+
+  color: aliceblue;
 }
 
-.tab {
+.tab-wrapper {
   text-align: center;
   margin: 0px;
 }
 
-.tab > h2 {
+.tab-wrapper > h2 {
   margin: 0 20px 0 0;
 }

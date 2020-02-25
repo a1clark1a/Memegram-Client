@@ -17,8 +17,12 @@ export default class DeleteButton extends Component {
   render() {
     const { id, user_id } = this.props;
     return (
-      <button onClick={() => this.handleDeleteButton(id, user_id)} id={id}>
-        Delete
+      <button
+        className="delete_button nav-button"
+        onClick={() => this.handleDeleteButton(id, user_id)}
+        id={id}
+      >
+        <span>Delete</span>
       </button>
     );
   }

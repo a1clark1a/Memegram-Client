@@ -8,5 +8,11 @@ a {
 }
 
 body {
-  background-color: aliceblue;
+  background-color: white;
+  font-family: "Titillium Web";
+}
+
+footer {
+  margin: 20px 0 0 0;
+  text-align: center;
 }

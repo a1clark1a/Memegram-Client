@@ -1,3 +1,12 @@
-.warning {
+.warning,
+.error-message {
   color: red;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: aliceblue;
 }

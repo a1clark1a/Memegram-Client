@@ -30,10 +30,6 @@ export default class ProfilePage extends Component {
     this.context.clearMemesList();
   }
 
-  reRender = () => {
-    console.log("calling rerender");
-  };
-
   displayImages() {
     const { memesList = [] } = this.context;
     return memesList.map(img => {
@@ -47,11 +43,7 @@ export default class ProfilePage extends Component {
             id={img.id}
             description={img.description}
           />
-          <DeleteButton
-            reRender={() => this.reRender()}
-            id={img.id}
-            user_id={img.user_id}
-          />
+          <DeleteButton id={img.id} user_id={img.user_id} />
         </article>
       );
     });

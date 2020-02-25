@@ -28,7 +28,7 @@ class App extends Component {
         <ImageProvider>
           <UserContextProvider>
             <Navbar />
-            <main>
+            <main role="main">
               {this.state.hasError && (
                 <p className="red">There was an error! Oh no!</p>
               )}

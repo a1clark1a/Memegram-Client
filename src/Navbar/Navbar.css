@@ -2,10 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(138, 136, 136);
+  background-color: rgb(32, 119, 45);
   position: fixed;
   top: 0;
   width: 100%;
+  box-shadow: 0 10px 15px grey;
 }
 
 .login-wrapper,
@@ -17,11 +18,53 @@
   margin-right: 3%;
 }
 
-.login-wrapper *,
+.login-wrapper,
 .profile-wrapper * {
-  padding-right: 10px;
+  padding: 0 10px;
 }
 
+.register-button {
+  padding: 10px;
+  border-radius: 5px;
+}
 .home-header {
-  margin-left: 10%;
+  font-family: "Krona One";
+  font-size: 20px;
+  color: aliceblue;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.app-icon {
+  width: 60px;
+  height: 60px;
+  padding: 10px 7px 10px 7px;
+}
+
+.login-link {
+  color: aliceblue;
+  padding: 10px 2px;
+  transition: all 0.5s;
+}
+
+.login-link span {
+  transition: 0.5s;
+}
+
+.login-link span:after {
+  content: "\00bb";
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.login-link:hover span {
+  padding-right: 25px;
+}
+
+.login-link:hover span:after {
+  opacity: 1;
+  right: 0;
 }

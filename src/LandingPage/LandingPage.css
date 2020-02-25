@@ -1,7 +1,9 @@
 .landing-image {
   width: 100%;
   height: 300px;
-  object-fit: cover;
+  object-fit: fill;
+  border: 1px black solid;
+  border-radius: 10px;
 }
 
 .image-container {
@@ -10,6 +12,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  margin-top: 50px;
 }
 
 .banner {
@@ -18,14 +21,23 @@
 
 .individ-wrapper {
   text-align: center;
-  text-decoration: none;
   color: black;
-  width: 350px;
-  max-height: 350px;
-  margin: 25px 15px 25px 15px;
+  width: 370px;
+  margin: 10px 15px 10px 15px;
+  padding-bottom: 5px;
+  background-color: rgba(32, 119, 45);
+  border-radius: 2%;
+  overflow: hidden;
+  box-shadow: 0 10px 5px 3px rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .display-img-title {
   margin: 0;
   padding: 0 20px 0 20px;
+  max-height: 30px;
+}
+
+.images-sect {
+  margin-top: 20px;
 }

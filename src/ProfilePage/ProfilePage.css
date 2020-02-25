@@ -6,11 +6,18 @@
 
 .image-art {
   text-align: center;
-  text-decoration: none;
   color: black;
-  width: 350px;
-  max-height: 350px;
-  margin: 25px 15px 25px 15px;
+  width: 370px;
+  margin: 10px 15px 10px 15px;
+  padding-bottom: 5px;
+  background-color: gray;
+  border-radius: 2%;
+  overflow-wrap: break-word;
+}
+
+.image-art > .individ-wrapper {
+  margin: 0;
+  padding: 0;
 }
 
 .profile-pic {

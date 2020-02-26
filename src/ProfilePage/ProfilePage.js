@@ -70,7 +70,9 @@ export default class ProfilePage extends Component {
             </h2>
           </div>
         </section>
-        <section className="images-sect">{this.displayImages()}</section>
+        <section className="images-sect prof-images-sect">
+          {this.displayImages()}
+        </section>
       </>
     );
   }

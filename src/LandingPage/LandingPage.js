@@ -33,11 +33,9 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <header className="banner" role="banner">
-        <section className="images-sect">
-          <div className="image-container">{this.displayImages()}</div>
-        </section>
-      </header>
+      <section className="images-sect sect">
+        <div className="image-container">{this.displayImages()}</div>
+      </section>
     );
   }
 }

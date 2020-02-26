@@ -23,7 +23,7 @@ export default class LoginPage extends Component {
 
   render() {
     return (
-      <section className="loginPage-sect">
+      <section className="loginPage-sect sect">
         <LoginForm onLoginSucces={this.handleLoginSuccess} />
       </section>
     );

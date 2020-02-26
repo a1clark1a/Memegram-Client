@@ -16,6 +16,7 @@ export default class UploadImageForm extends Component {
 
   onUploadSuccess = () => {
     const { user } = this.context;
+    console.log("did we get user?", user);
     const { history } = this.props;
     history.push(`/users/${user.user_name}`);
   };
@@ -24,6 +25,7 @@ export default class UploadImageForm extends Component {
     e.preventDefault();
     const { title, description, url } = e.target;
     const { user } = this.context;
+    console.log("values", title.value, description.value, url.value);
     console.log("user that submitted", user.user_name);
     this.setState({ error: null });
     ImageService.postImageWithURL({
@@ -46,17 +48,73 @@ export default class UploadImageForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <section className="form-sect">
-        <form className="upload-form">
-          <div role="alert">
-            {error && <p className="error-message">{error}</p>}
-          </div>
+      <section className="upload-sect sect">
+        <form className="uploadUrl-form " onSubmit={this.handleSubmitWithUrl}>
+          <fieldset className="url-fieldset">
+            <div role="alert">
+              {error && <p className="error-message">{error}</p>}
+            </div>
+            <legend className="form-legend">
+              {" < "}URL{" > "}
+            </legend>
+            <label htmlFor="url">
+              Select Image <code className="req"> *</code>
+            </label>
+            <input
+              required
+              type="url"
+              id="url"
+              name="url"
+              aria-label="url"
+              aria-required="true"
+              size="25"
+              placeholder="https://example.com/example.jpg"
+            />
 
+            <label htmlFor="title">
+              Title <code className="req"> *</code>
+            </label>
+            <input
+              required
+              type="text"
+              id="title"
+              name="title"
+              aria-label="title"
+              aria-required="true"
+              placeholder="Title of Meme"
+            />
+
+            <label htmlFor="description">
+              description<code className="req"> *</code>
+            </label>
+            <input
+              required
+              type="text"
+              id="description"
+              name="description"
+              aria-label="description"
+              aria-required="true"
+              placeholder="description of Meme"
+            />
+
+            <button
+              htmlFor="uploadUrl-form"
+              className="upload-button nav-button button"
+              type="submit"
+            >
+              <span>Submit</span>
+            </button>
+          </fieldset>
+        </form>
+
+        <form className="upload-form">
           <fieldset className="upload-fieldset">
             <h3 className="in-dev warning">IN DEVELOPMENT</h3>
-            <legend>Upload Image File</legend>
+            <legend className="form-legend">
+              {" < "}File{" > "}
+            </legend>
             <label htmlFor="upload">
-              Select Image{" "}
+              Select Image
               <input
                 type="file"
                 id="upload"
@@ -66,50 +124,14 @@ export default class UploadImageForm extends Component {
                 aria-required="true"
               />
             </label>
-            <button type="submit" disabled={true}>
-              Submit
+            <button
+              className="upload-button nav-button button disabled"
+              htmlFor="upload-form"
+              type="submit"
+              disabled={true}
+            >
+              <span>Submit</span>
             </button>
-          </fieldset>
-        </form>
-        <form className="uploadUrl-form" onSubmit={this.handleSubmitWithUrl}>
-          <div role="alert">
-            {error && <p className="error-message">{error}</p>}
-          </div>
-          <fieldset className="url-fieldset">
-            <legend>Upload URL Image</legend>
-            <label htmlFor="title">
-              <input
-                type="text"
-                id="title"
-                name="title"
-                aria-label="title"
-                aria-required="true"
-                placeholder="Title of Meme"
-              />
-            </label>
-            <label htmlFor="description">
-              <input
-                type="text"
-                id="description"
-                name="description"
-                aria-label="description"
-                aria-required="true"
-                placeholder="description of Meme"
-              />
-            </label>
-            <label htmlFor="url">
-              Select Image{" "}
-              <input
-                type="url"
-                id="url"
-                name="url"
-                aria-label="url"
-                aria-required="true"
-                size="25"
-                placeholder="https://example.com/example.jpg"
-              />
-            </label>
-            <button type="submit">Submit</button>
           </fieldset>
         </form>
       </section>

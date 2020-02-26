@@ -53,7 +53,9 @@ export default class ImagePage extends Component {
     const { image, user_name } = this.context;
     return (
       <div className="image-wrapper">
-        <h1 className="image-title">{image.title}</h1>
+        <div className="title-wrapper">
+          <h1 className="image-title">{image.title}</h1>
+        </div>
         <img className="clicked-image" src={image.url} alt={image.title} />
         {/*<ButtonWrapper
           onUpvoteClick={() => this.handleUpvoteClick(imageId, image)}
@@ -69,7 +71,7 @@ export default class ImagePage extends Component {
 
   render() {
     return (
-      <section className="image-sect">
+      <section className="image-sect sect">
         {this.renderImagePage()}
         <CommentSection />
       </section>

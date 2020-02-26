@@ -1,15 +1,22 @@
-.upload-form,
-.uploadUrl-form {
+.uploadUrl-form,
+.upload-form {
+  margin-top: 100px;
   display: flex;
   justify-content: center;
-  text-align: center;
   width: 100%;
+}
+
+.url-fieldset,
+.upload-fieldset {
+  display: flex;
+  flex-direction: column;
 }
 
 .in-dev {
   margin: 0;
 }
 
-.form-sect {
-  margin-top: 200px;
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

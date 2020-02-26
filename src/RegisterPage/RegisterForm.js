@@ -33,46 +33,56 @@ export default class RegisterPage extends Component {
   render() {
     const { error } = this.state;
     return (
-      <form className="register-form" onSubmit={this.handleSubmitNewUser}>
-        <div role="alert">
-          {error && <p className="error-message">{error}</p>}
-        </div>
+      <form className="register-form form" onSubmit={this.handleSubmitNewUser}>
         <fieldset className="register-fieldset">
-          <legend>Register</legend>
+          <div role="alert">
+            {error && <p className="error-message">{error}</p>}
+          </div>
+          <legend className="form-legend">
+            {" < "}Register{" > "}
+          </legend>
           <label htmlFor="full_name">
-            Full Name *
-            <input
-              type="text"
-              className="register-full-name-input"
-              name="full_name"
-              id="full_name"
-              aria-label="Full Name"
-              aria-required="true"
-            />
+            Full Name <code className="req"> *</code>
           </label>
+          <input
+            required
+            type="text"
+            className="register-full-name-input"
+            name="full_name"
+            id="full_name"
+            aria-label="Full Name"
+            aria-required="true"
+          />
+
           <label htmlFor="user_name">
-            User Name *
-            <input
-              type="text"
-              className="register-user-name-input"
-              name="user_name"
-              id="user_name"
-              aria-label="User Name"
-              aria-required="true"
-            />
+            User Name <code className="req"> *</code>
           </label>
+          <input
+            required
+            type="text"
+            className="register-user-name-input"
+            name="user_name"
+            id="user_name"
+            aria-label="User Name"
+            aria-required="true"
+          />
+
           <label htmlFor="password">
-            Password *
-            <input
-              type="password"
-              className="register-password-input"
-              name="password"
-              id="password"
-              aria-label="Password"
-              aria-required="true"
-            />
+            Password <code className="req"> *</code>
           </label>
-          <button type="submit">Register</button>
+          <input
+            required
+            type="password"
+            className="register-password-input"
+            name="password"
+            id="password"
+            aria-label="Password"
+            aria-required="true"
+          />
+
+          <button className="nav-button button" type="submit">
+            Register
+          </button>
         </fieldset>
       </form>
     );

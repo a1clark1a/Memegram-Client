@@ -12,8 +12,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: stretch;
   width: 100%;
-  margin-top: 50px;
 }
 
 .banner {
@@ -24,11 +24,13 @@
   text-align: center;
   color: black;
   width: 370px;
+  max-height: 380px;
   margin: 10px 15px 10px 15px;
   padding-bottom: 5px;
   background-color: rgb(223, 114, 41);
   border-radius: 2%;
   overflow: hidden;
+  text-overflow: ellipsis;
   box-shadow: 0 4px 2px 3px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -36,10 +38,11 @@
   margin: 0;
   padding: 0 20px 0 20px;
   white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   font-size: 2rem;
 }
 
 .images-sect {
-  margin-top: 20px;
+  margin-top: 100px;
 }

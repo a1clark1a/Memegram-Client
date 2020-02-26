@@ -33,7 +33,7 @@ export default class CommentSection extends Component {
     return (
       <button
         type="button"
-        className="makeButton"
+        className="makeComment-button nav-button"
         onClick={e => this.handleMakeCommentClick(e)}
       >
         Make a Comment
@@ -43,8 +43,9 @@ export default class CommentSection extends Component {
 
   displayWriteCommentInput = () => {
     const display = TokenService.hasAuthToken() ? (
-      <div className="comment-wrapper">
+      <div className="makeComment-wrapper">
         <textarea
+          required
           className="comment"
           type="text"
           id="comment"
@@ -52,7 +53,9 @@ export default class CommentSection extends Component {
           aria-label="Write comment here..."
           placeholder="write comment here..."
         ></textarea>
-        <button type="submit">Submit Comment</button>
+        <button className="submitComment-button nav-button" type="submit">
+          <span>Submit Comment</span>
+        </button>
       </div>
     ) : (
       <Redirect to={"/login"} />
@@ -66,14 +69,13 @@ export default class CommentSection extends Component {
 
     const listOfComments = comments.map(comment => {
       return (
-        <li key={comment.id}>
+        <li key={comment.id} className="comment-li">
           <p>
-            <code>By User:{comment.user_id} = </code>
-            {comment.comment}
+            <code>By User:{comment.user_id}(Name here),</code>
+
+            <code> {comment.date_created}</code>
           </p>
-          <p>
-            <code>{comment.date_created}</code>
-          </p>
+          <p className="comment">{comment.comment}</p>
         </li>
       );
     });
@@ -83,6 +85,7 @@ export default class CommentSection extends Component {
   render() {
     return (
       <section className="comment-sect">
+        <h3 className="comment-header">Comments</h3>
         <div className="comment-wrapper">{this.renderComments()}</div>
         <form className="comment-form" onSubmit={this.handleSubmitComment}>
           {this.state.makeComment

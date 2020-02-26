@@ -11,7 +11,6 @@ export default class DeleteButton extends Component {
     ImageService.deleteImageUploadedByUser(imageId, userId)
       .then(() => this.context.deleteImageFromList(imageId))
       .catch(this.context.setError);
-    this.props.reRender();
   };
 
   render() {

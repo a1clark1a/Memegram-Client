@@ -53,7 +53,7 @@ export default class ProfilePage extends Component {
     const { user } = this.context;
     return (
       <>
-        <section className="profilePage-sect">
+        <section className="profilePage-sect sect">
           <article>
             <h1 className="prof-user-name">{user.user_name}</h1>
             <Link to={`/upload`}>

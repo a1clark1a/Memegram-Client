@@ -3,15 +3,35 @@
 }
 
 .comment-wrapper {
-  margin: auto;
+  border-top: 2px solid rgb(36, 35, 35);
+  margin: 0 10px;
 }
 
 .comment-form {
   margin: auto;
 }
+
+.comments-list {
+  list-style-type: none;
+  padding-left: 10px;
+}
 .comment-sect {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 5%;
+  padding-bottom: 5%;
+}
+
+.comment-header {
+  font-size: 2rem;
+  margin: 2% 1%;
+}
+
+.comment {
+  background-color: wheat;
+  padding-left: 10px;
+}
+
+.makeComment-wrapper {
+  display: flex;
 }

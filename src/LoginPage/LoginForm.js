@@ -33,35 +33,45 @@ export default class LoginPage extends Component {
   render() {
     const { error } = this.state;
     return (
-      <form className="login-form" onSubmit={this.handleLoginSubmit}>
-        <div role="alert">
-          {error && <p className="error-message">{error}</p>}
-        </div>
+      <form className="login-form form" onSubmit={this.handleLoginSubmit}>
         <fieldset className="login-fieldset">
-          <legend>Log In</legend>
+          <div role="alert">
+            {error && <p className="error-message">{error}</p>}
+          </div>
+          <legend className="form-legend">
+            {" < "}Log In {" > "}
+          </legend>
           <label htmlFor="user_name">
-            User Name *
-            <input
-              type="text"
-              className="login-user-name-input"
-              name="user_name"
-              id="user_name"
-              aria-label="User Name"
-              aria-required="true"
-            />
+            User Name
+            <code className="req"> *</code>
           </label>
+          <input
+            required
+            type="text"
+            className="login-user-name-input"
+            name="user_name"
+            id="user_name"
+            aria-label="User Name"
+            aria-required="true"
+          />
+
           <label htmlFor="password">
-            Password *
-            <input
-              type="password"
-              className="login-password-input"
-              name="password"
-              id="password"
-              aria-label="Password"
-              aria-required="true"
-            />
+            Password
+            <code className="req"> *</code>
           </label>
-          <button type="submit">Login</button>
+          <input
+            required
+            type="password"
+            className="login-password-input"
+            name="password"
+            id="password"
+            aria-label="Password"
+            aria-required="true"
+          />
+
+          <button className="nav-button button" type="submit">
+            <span>Login</span>
+          </button>
         </fieldset>
       </form>
     );

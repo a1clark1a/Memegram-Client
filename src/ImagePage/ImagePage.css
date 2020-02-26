@@ -11,7 +11,32 @@
 }
 
 .clicked-image {
-  width: 600px;
+  width: 400px;
   height: 500px;
   object-fit: contain;
+  box-shadow: 0 4px 2px 3px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.image-description {
+  padding: 0 5px;
+  text-align: center;
+}
+
+.title-wrapper {
+  width: 50%;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .clicked-image {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .clicked-image {
+    width: 1000px;
+    height: 800px;
+  }
 }

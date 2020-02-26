@@ -67,15 +67,19 @@ export default class CommentSection extends Component {
   renderComments = () => {
     const { comments } = this.context;
 
-    const listOfComments = comments.map(comment => {
+    const listOfComments = comments.map((comment, i) => {
       return (
-        <li key={comment.id} className="comment-li">
+        <li key={`${comment.id}-${i}`} className="comment-li">
           <p>
-            <code>By User:{comment.user_id}(Name here),</code>
+            <code className="comment-user">
+              {"< "}
+              {comment.user.user_name}
+              {" >"},
+            </code>
 
             <code> {comment.date_created}</code>
           </p>
-          <p className="comment">{comment.comment}</p>
+          <p className="comment">: {comment.comment}</p>
         </li>
       );
     });

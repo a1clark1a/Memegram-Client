@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 
+export const nullMemeObjectShap = {
+  user: {},
+  tags: []
+};
+
 const ImageContext = React.createContext({
-  image: {},
+  image: nullMemeObjectShap,
   user_name: "",
-  comments: [],
+  comments: [nullMemeObjectShap],
   error: null,
   setError: () => {},
   setImage: () => {},
@@ -20,9 +25,9 @@ export default ImageContext;
 
 export class ImageProvider extends Component {
   state = {
-    image: {},
+    image: nullMemeObjectShap,
     user_name: "",
-    comments: [],
+    comments: [nullMemeObjectShap],
     error: null
   };
 
@@ -43,8 +48,8 @@ export class ImageProvider extends Component {
 
   clearImage = () => {
     console.log("clearing the image");
-    this.setImage({});
-    this.setComments([]);
+    this.setImage(nullMemeObjectShap);
+    this.clearComments();
   };
 
   setComments = comments => {
@@ -54,7 +59,7 @@ export class ImageProvider extends Component {
 
   clearComments = () => {
     console.log("clearing comments");
-    this.setComments([]);
+    this.setComments([nullMemeObjectShap]);
   };
 
   addComments = comment => {

@@ -20,7 +20,7 @@ const ImageService = {
       }
     );
   },
-  getImagePoster(userId) {
+  getPoster(userId) {
     return fetch(`${config.API_ENDPOINT}/memes/${userId}/users`).then(res => {
       return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
     });

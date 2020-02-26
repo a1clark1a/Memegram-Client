@@ -34,6 +34,7 @@ export default class ImagePage extends Component {
   componentWillUnmount() {
     this.context.clearImage();
     this.context.clearComments();
+    this.context.clearUser();
   }
 
   handleUpvoteClick = (imageId, image) => {

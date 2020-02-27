@@ -13,11 +13,16 @@ body {
 }
 
 footer {
+  text-decoration: none;
   padding: 10px 0;
   text-align: center;
   background-color: rgb(36, 35, 35);
   color: aliceblue;
   line-height: 50px;
+}
+
+footer > code > a {
+  color: aliceblue;
 }
 
 main {

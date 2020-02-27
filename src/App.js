@@ -48,7 +48,15 @@ class App extends Component {
                 <Route path="/*" component={NotFoundPage} />
               </Switch>
               <footer>
-                <code>Anthony Clark Perfecto @{new Date().getFullYear()}</code>
+                <code>
+                  <a
+                    href="https://acperfecto.now.sh/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Anthony Clark Perfecto @{new Date().getFullYear()}
+                  </a>
+                </code>
               </footer>
             </main>
           </UserContextProvider>

@@ -30,7 +30,7 @@ class App extends Component {
             <Navbar />
             <main role="main">
               {this.state.hasError && (
-                <p className="red">There was an error! Oh no!</p>
+                <p className="warning">There was an error! Oh no!</p>
               )}
               <Switch>
                 <Route exact path={"/"} component={LandingPage} />

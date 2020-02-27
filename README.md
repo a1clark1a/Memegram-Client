@@ -24,7 +24,7 @@
 ### Landin Page
 
 - Desktop
-  ![Desktop View](screenshots/Desktop-LandingPage.PNG=100x200)
+  ![Desktop View](screenshots/Desktop-LandingPage.PNG)
 
 - Mobile
   ![Desktop View](screenshots/Mobile-LandingPage.jpg)

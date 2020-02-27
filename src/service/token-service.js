@@ -15,7 +15,6 @@ const TokenService = {
     window.localStorage.removeItem("user_name");
   },
   hasAuthToken() {
-    console.log("checking for auth token");
     return !!TokenService.getAuthToken();
   },
   getUserName() {

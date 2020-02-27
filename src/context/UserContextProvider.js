@@ -8,7 +8,6 @@ const UserContext = React.createContext({
   clearUser: () => {},
   setError: () => {},
   clearError: () => {},
-  UploadMeme: () => {},
   setMemesList: () => {},
   clearMemesList: () => {},
   deleteImageFromList: () => {}
@@ -24,46 +23,35 @@ export class UserContextProvider extends Component {
   };
 
   setUser = user => {
-    console.log("setting user", user);
     this.setState({
       user
     });
   };
 
   clearUser = () => {
-    console.log("clearing user");
     this.setUser({ user: {} });
     this.setMemesList([]);
   };
 
   setError = error => {
-    console.log(error);
     this.setState({
       error
     });
   };
 
   clearError = () => {
-    console.log("clearing error");
     this.setState({ error: null });
   };
 
-  UploadMeme = meme => {
-    //TODO upload meme
-  };
-
   setMemesList = memesList => {
-    console.log("setting memesList for user", memesList);
     this.setState({ memesList });
   };
 
   clearMemesList = () => {
-    console.log("clearing memeslist");
     this.setState({ memesList: [] });
   };
 
   deleteImageFromList = imageId => {
-    console.log("deleting image", imageId);
     const newImageList = this.state.memesList.filter(img => {
       return img.id !== imageId;
     });
@@ -81,7 +69,6 @@ export class UserContextProvider extends Component {
       clearUser: this.clearUser,
       setError: this.setError,
       clearError: this.clearError,
-      UploadMeme: this.UploadMeme,
       setMemesList: this.setMemesList,
       clearMemesList: this.clearMemesList,
       deleteImageFromList: this.deleteImageFromList

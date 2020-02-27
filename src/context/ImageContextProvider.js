@@ -32,48 +32,39 @@ export class ImageProvider extends Component {
   };
 
   setError = error => {
-    console.error(error);
     this.setState({ error });
   };
 
   clearError = () => {
-    console.log("clearing error");
     this.setState({ error: null });
   };
 
   setImage = image => {
-    console.log("setting image", image);
     this.setState({ image });
   };
 
   clearImage = () => {
-    console.log("clearing the image");
     this.setImage(nullMemeObjectShap);
     this.clearComments();
   };
 
   setComments = comments => {
-    console.log("setting comments", comments);
     this.setState({ comments });
   };
 
   clearComments = () => {
-    console.log("clearing comments");
     this.setComments([nullMemeObjectShap]);
   };
 
   addComments = comment => {
-    console.log("adding comment", comment);
     this.setComments([...this.state.comments, comment]);
   };
 
   addUserName = user_name => {
-    console.log("adding user_name", user_name);
     this.setState({ user_name });
   };
 
   clearUser = () => {
-    console.log("clearing user");
     this.addUserName("");
   };
 

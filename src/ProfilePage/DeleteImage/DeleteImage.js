@@ -7,7 +7,6 @@ export default class DeleteButton extends Component {
 
   handleDeleteButton = (imageId, userId) => {
     this.context.clearError();
-    console.log("delete function called");
     ImageService.deleteImageUploadedByUser(imageId, userId)
       .then(() => this.context.deleteImageFromList(imageId))
       .catch(this.context.setError);

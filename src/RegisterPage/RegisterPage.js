@@ -8,7 +8,6 @@ export default class RegisterPage extends Component {
     }
   };
   handleRegistrationSuccess = () => {
-    console.log("called");
     const { history } = this.props;
     history.push("/login");
   };

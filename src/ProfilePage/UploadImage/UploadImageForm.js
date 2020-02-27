@@ -16,7 +16,6 @@ export default class UploadImageForm extends Component {
 
   onUploadSuccess = () => {
     const { user } = this.context;
-    console.log("did we get user?", user);
     const { history } = this.props;
     history.push(`/users/${user.user_name}`);
   };
@@ -25,8 +24,6 @@ export default class UploadImageForm extends Component {
     e.preventDefault();
     const { title, description, url } = e.target;
     const { user } = this.context;
-    console.log("values", title.value, description.value, url.value);
-    console.log("user that submitted", user.user_name);
     this.setState({ error: null });
     ImageService.postImageWithURL({
       title: title.value,

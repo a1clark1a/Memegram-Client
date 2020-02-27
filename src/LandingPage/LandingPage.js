@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ImageService from "../service/image-service";
 import ImagesListConext from "../context/ImageListContextProvider";
 import DisplayImages from "./DisplayImages/DisplayImages";
-//import PropTypes from "prop-types"; TODO update to use proptypes once API server is setup
 import "./LandingPage.css";
 
 class LandingPage extends Component {

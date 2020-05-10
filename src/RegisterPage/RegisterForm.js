@@ -1,32 +1,35 @@
 import React, { Component } from "react";
+
 import AuthApiService from "../service/auth-api-service";
+import InfoToolTip from "../Utility/InfoToolTip";
+
 import "./RegisterPage.css";
 
 export default class RegisterPage extends Component {
   static defaultProps = {
-    onRegisterSuccess: () => {}
+    onRegisterSuccess: () => {},
   };
 
   state = { error: null };
 
-  handleSubmitNewUser = e => {
+  handleSubmitNewUser = (e) => {
     e.preventDefault();
     const { full_name, user_name, password } = e.target;
     this.setState({
-      error: null
+      error: null,
     });
     AuthApiService.postRegisterUser({
       user_name: user_name.value,
       password: password.value,
-      full_name: full_name.value
+      full_name: full_name.value,
     })
-      .then(res => {
+      .then((res) => {
         full_name.value = "";
         user_name.value = "";
         password.value = "";
         this.props.onRegisterSuccess();
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.error.message });
       });
   };
@@ -67,8 +70,13 @@ export default class RegisterPage extends Component {
             aria-required="true"
           />
 
-          <label htmlFor="password">
-            Password <code className="req"> *</code>
+          <label htmlFor="password" className="label-alignment">
+            Password <code className="req">*</code>
+            <InfoToolTip
+              text={
+                "Password must contain 1 upper case, lower case, number and special character"
+              }
+            />
           </label>
           <input
             required

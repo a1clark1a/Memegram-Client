@@ -1,17 +1,21 @@
 import React, { Component } from "react";
+
 import ImageService from "../../service/image-service";
 import UserContext from "../../context/UserContextProvider";
+
+import InfoToolTip from "../../Utility/InfoToolTip";
+
 import "./UploadImageForm.css";
 
 export default class UploadImageForm extends Component {
   static contextType = UserContext;
   static defaultProps = {
     history: {
-      push: () => {}
-    }
+      push: () => {},
+    },
   };
   state = {
-    error: null
+    error: null,
   };
 
   onUploadSuccess = () => {
@@ -20,7 +24,7 @@ export default class UploadImageForm extends Component {
     history.push(`/users/${user.user_name}`);
   };
 
-  handleSubmitWithUrl = e => {
+  handleSubmitWithUrl = (e) => {
     e.preventDefault();
     const { title, description, url } = e.target;
     const { user } = this.context;
@@ -29,7 +33,7 @@ export default class UploadImageForm extends Component {
       title: title.value,
       description: description.value,
       url: url.value,
-      user_id: user.id
+      user_id: user.id,
     })
       .then(() => {
         title.value = "";
@@ -37,7 +41,7 @@ export default class UploadImageForm extends Component {
         url.value = "";
         this.onUploadSuccess();
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.error.message });
       });
   };
@@ -54,8 +58,13 @@ export default class UploadImageForm extends Component {
             <legend className="form-legend">
               {" < "}URL{" > "}
             </legend>
-            <label htmlFor="url">
+            <label htmlFor="url" className="label-alignment">
               Select Image <code className="req"> *</code>
+              <InfoToolTip
+                text={
+                  "The url for the image must be a direct link, Right click on an image and press Open Image in New tab and copy the url from there"
+                }
+              />
             </label>
             <input
               required

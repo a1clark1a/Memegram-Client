@@ -43,3 +43,7 @@ main {
 .error-message {
   text-align: center;
 }
+
+.label-alignment {
+  display: flex;
+}

@@ -1,27 +1,20 @@
-import React, { Component } from "react";
+import React, { Component, useState, useContext } from "react";
+
 import UserContext from "../../context/UserContextProvider";
 import ImageService from "../../service/image-service";
 
-export default class DeleteButton extends Component {
-  static contextType = UserContext;
+import DeleteModal from "../../Utility/DeleteModal/DeleteModal";
 
-  handleDeleteButton = (imageId, userId) => {
-    this.context.clearError();
+export default function DeleteButton(props) {
+  const { id, user_id } = props;
+  const contextType = useContext(UserContext);
+
+  const handleDeleteButton = (imageId, userId) => {
+    contextType.clearError();
     ImageService.deleteImageUploadedByUser(imageId, userId)
-      .then(() => this.context.deleteImageFromList(imageId))
-      .catch(this.context.setError);
+      .then(() => contextType.deleteImageFromList(imageId))
+      .catch(contextType.setError);
   };
 
-  render() {
-    const { id, user_id } = this.props;
-    return (
-      <button
-        className="delete_button nav-button"
-        onClick={() => this.handleDeleteButton(id, user_id)}
-        id={id}
-      >
-        <span>Delete</span>
-      </button>
-    );
-  }
+  return <DeleteModal handleConfirm={() => handleDeleteButton(id, user_id)} />;
 }

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ImageService from "../../service/image-service";
 import UserContext from "../../context/UserContextProvider";
 
-import InfoToolTip from "../../Utility/InfoToolTip";
+import InfoToolTip from "../../Utility/InfoToolTip/InfoToolTip";
 
 import "./UploadImageForm.css";
 

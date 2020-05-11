@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import AuthApiService from "../service/auth-api-service";
-import InfoToolTip from "../Utility/InfoToolTip";
+import InfoToolTip from "../Utility/InfoToolTip/InfoToolTip";
 
 import "./RegisterPage.css";
 

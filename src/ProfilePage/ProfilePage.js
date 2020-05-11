@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import UserContext from "../context/UserContextProvider";
-import DisplayImages from "../LandingPage/DisplayImages/DisplayImages";
-import UserService from "../service/user-service";
-import "./ProfilePage.css";
 import { Link } from "react-router-dom";
+
+import UserContext from "../context/UserContextProvider";
+import UserService from "../service/user-service";
+
+import DisplayImages from "../LandingPage/DisplayImages/DisplayImages";
 import DeleteButton from "./DeleteImage/DeleteImage";
+
+import "./ProfilePage.css";
 
 export default class ProfilePage extends Component {
   static defaultProps = {
-    match: { params: {} }
+    match: { params: {} },
   };
   static contextType = UserContext;
 
@@ -32,7 +35,7 @@ export default class ProfilePage extends Component {
 
   displayImages() {
     const { memesList = [] } = this.context;
-    return memesList.map(img => {
+    return memesList.map((img) => {
       return (
         <article className="image-art" key={img.id}>
           <DisplayImages
